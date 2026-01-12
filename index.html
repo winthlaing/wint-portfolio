@@ -1,73 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Wint Portfolio</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0172B0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <header>
+    <img src="myphoto.jpg">
+    <h1>Wint Thinzar Hlaing</h1>
+    <p>Web Developer | Modern & Responsive Websites</p>
+    <a href="#contact" class="button">Hire Me</a>
+</header>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+/* Reset & Global */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f4f8;color:#333;transition:0.3s;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;}
 
-        .profile-card {
-            background: white;
-            width: 380px;
-            padding: 32px;
-            border-radius: 22px;
-            text-align: center;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-        }
+/* Dark Mode */
+body.dark{background:#121212;color:#f0f0f0;}
+body.dark header{background:#1e1e1e;}
+body.dark section{background:#1e1e1e;box-shadow:0 10px 25px rgba(0,0,0,0.3);}
+body.dark nav{background:rgba(0,0,0,0.85);}
+body.dark .social-links a{color:#f0f0f0;}
 
-        .profile-card img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #89D6EB;
-            margin-bottom: 18px;
-        }
+/* Navigation */
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:center;background:rgba(255,255,255,0.95);padding:15px 0;z-index:100;box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+nav a{margin:0 20px;color:#0172fe;font-weight:bold;transition:0.3s;}
+nav a:hover{color:#ff5e62;}
 
-        .profile-card h1 {
-            margin: 10px 0;
-            color: #0172B0;
-        }
+/* Dark mode toggle button */
+#dark-toggle{
+    position:fixed;top:20px;right:20px;background:#0172fe;color:white;border:none;padding:10px 15px;border-radius:8px;transition:0.3s;z-index:101;
+}
+#dark-toggle:hover{background:#ff5e62;}
 
-        .profile-card p {
-            color: #666;
-            font-size: 16px;
-            line-height: 1.6;
-        }
+/* Hero Section */
+header{
+    height:100vh;background:linear-gradient(135deg,#0172fe,#66a6ff);color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px;
+}
+header .profile-pic{
+    width:150px;height:150px;border-radius:50%;border:4px solid white;margin-bottom:20px;object-fit:cover;
+}
+header h1{font-size:3em;margin-bottom:10px;}
+header p{font-size:1.2em;margin-bottom:25px;}
+header a.button{padding:12px 30px;background:white;color:#0172fe;font-weight:bold;border-radius:10px;transition:0.3s;}
+header a.button:hover{background:#ff5e62;color:white;}
 
-        .tag {
-            display: inline-block;
-            margin-top: 14px;
-            padding: 8px 18px;
-            background: #fff1a8;
-            color: #555;
-            border-radius: 22px;
-            font-size: 14px;
-        }
-    </style>
+/* Sections */
+section{padding:80px 20px;max-width:900px;margin:0 auto;opacity:0;transform:translateY(40px);animation:fadeInUp 1s forwards;}
+section.about{animation-delay:0.2s;}
+section.projects{animation-delay:0.4s;}
+section.skills{animation-delay:0.5s;}
+section.contact{animation-delay:0.6s;}
+@keyframes fadeInUp{to{opacity:1;transform:translateY(0);}}
+
+/* Section Titles */
+h2{text-align:center;color:#0172fe;margin-bottom:40px;}
+
+/* About */
+.about p{font-size:1.05em;line-height:1.7;text-align:center;}
+
+/* Projects Stylish Cards */
+.projects-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+.project-card{
+    background:white;border-radius:15px;padding:25px;box-shadow:0 8px 20px rgba(0,0,0,0.1);transition:transform 0.3s,box-shadow 0.3s;text-align:center;
+}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 15px 30px rgba(0,0,0,0.15);}
+.project-card h3{color:#0172fe;margin-bottom:15px;}
+.project-card p{color:#555;font-size:0.95em;line-height:1.5;}
+
+/* Skills Section */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:20px;text-align:center;}
+.skills-grid i{font-size:2.5em;color:#0172fe;margin-bottom:10px;}
+.skills-grid p{margin-top:5px;font-weight:bold;color:#555;}
+
+/* Contact */
+.contact form{display:flex;flex-direction:column;gap:15px;}
+.contact input,.contact textarea{padding:12px;border-radius:8px;border:1px solid #ccc;font-size:1em;width:100%;}
+.contact button{background:#0172fe;color:white;border:none;border-radius:10px;padding:15px;font-size:1.1em;cursor:pointer;transition:0.3s;}
+.contact button:hover{background:#ff5e62;}
+
+/* Social Links */
+.social-links{text-align:center;margin-top:25px;}
+.social-links a{font-size:2em;margin:0 15px;color:#0172fe;transition:0.3s;}
+.social-links a:hover{color:#ff5e62;transform:scale(1.2);}
+
+/* Footer */
+footer{text-align:center;padding:20px;color:#777;font-size:0.9em;}
+
+/* Responsive */
+@media(max-width:600px){header h1{font-size:2.5em;} nav a{margin:0 10px;}}
+</style>
 </head>
 <body>
 
-    <div class="profile-card">
-        <!-- Replace photo.jpg with your image -->
-        <img src="photo.jpg" alt="My Photo" width="50" height="50">
+<!-- Dark Mode Toggle -->
+<button id="dark-toggle">Dark Mode</button>
 
-        <h1>Hello, I'm Wint.</h1>
-        <p>
-            I am a final-year Computer University student with strong interest in
-            software development and web technologies.
-            I enjoy solving problems, learning new tools, and building real-world projects.
-        </p>
+<!-- Navigation -->
+<nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+</nav>
 
+<!-- Hero -->
+<header>
+    <img src="https://via.placeholder.com/150" alt="Profile Photo" class="profile-pic">
+    <h1>Wint Thinzar Hlaing</h1>
+    <p>Web Developer | Modern & Responsive Websites</p>
+    <a href="#contact" class="button">Hire Me</a>
+</header>
+
+<!-- About Me -->
+<section id="about" class="about">
+    <h2>About Me</h2>
+    <p>Hello! I’m Wint Thinzar Hlaing, a professional web developer. I specialize in creating responsive, modern, and interactive websites. I am passionate about clean design, functional UI/UX, and learning new technologies to deliver high-quality projects.</p>
+</section>
+
+<!-- Projects Stylish Cards -->
+<section id="projects" class="projects">
+    <h2>Projects</h2>
+    <div class="projects-cards">
+        <div class="project-card">
+            <h3>Project 1</h3>
+            <p>A responsive website built with HTML, CSS, and JavaScript that adapts perfectly to all devices.</p>
+        </div>
+        <div class="project-card">
+            <h3>Project 2</h3>
+            <p>A dynamic web application using React and Firebase for real-time content management and interactivity.</p>
+        </div>
+        <div class="project-card">
+            <h3>Project 3</h3>
+            <p>My personal portfolio website showcasing my skills, projects, and clean, modern design.</p>
+        </div>
     </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="skills">
+    <h2>My Skills</h2>
+    <div class="skills-grid">
+        <div><i class="fab fa-html5"></i><p>HTML</p></div>
+        <div><i class="fab fa-css3-alt"></i><p>CSS</p></div>
+        <div><i class="fab fa-js"></i><p>JavaScript</p></div>
+        <div><i class="fab fa-react"></i><p>React</p></div>
+        <div><i class="fab fa-git-alt"></i><p>Git</p></div>
+        <div><i class="fab fa-node"></i><p>Node.js</p></div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/wint-thinzar-hlaing-5428233a5/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/winthlaing" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>&copy; 2026 Wint Thinzar Hlaing | All Rights Reserved</footer>
+
+<!-- Dark Mode Script -->
+<script>
+const toggle = document.getElementById('dark-toggle');
+toggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    toggle.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+});
+</script>
 
 </body>
 </html>
+
+
